@@ -141,7 +141,7 @@ with open(filename, 'r') as File:
             interval = int(row[8])
             if log:
               print("meter", meter)
-            totals[meter] = ([0.0 for x in range(4)])
+            totals[meter] = ([0.0 for x in range(5)])
             days[meter] = 0;
 
           if type == 300:
@@ -178,7 +178,7 @@ for i in totals:
       totalPricePeriod += price
   print(i, "total", i, "is", round(totalEnergyPeriod, 2),"kWh $", round(totalPricePeriod, 2))
   print(i, 'average usage per day', round(totalEnergyPeriod / numberOfDays,3))
-  print(i, 'average cost per day', round(totalPricePeriod / numberOfDays,2))
+  print(i, 'average cost per day $', round(totalPricePeriod / numberOfDays,2))
   print()
 print('number of days in period', numberOfDays)
-print('daily charge', config['daily'] * numberOfDays / 100)
+print('daily charge $', config['daily'] * numberOfDays / 100)
