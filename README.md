@@ -3,7 +3,7 @@ Download the NEM12 file from your electricity network provider,
 then you run
 
 ```
-./analysis_power.py -f /Users/jyavenard/Downloads/61022432106_20220216_20240216_20240217150241_CITIPOWER_DETAILED.csv -d 20230217:20240216 -c tariffEV.cfg
+./analysis_power.py -f /path/to/CITIPOWER_DETAILED.csv -d 20230217:20240216 -c tariffEV.cfg
 ```
 
 
@@ -12,26 +12,21 @@ the date there is the last 12 months.
 this will output something like:
 
 ```
-period is 2023-02-17 00:00:00 to 2024-02-16 23:59:59 inclusive
-total amount of days:  {'B1': 365, 'E1': 365}
-Total for meter B1 tariff 1 2722.194 kWh -> $ 581.03
-Total for meter B1 tariff 2 64.914 kWh -> $ 24.13
-B1 total B1 is 2787.11 kWh $ 605.15
-B1 average usage per day 7.636
-B1 average cost per day 1.66
+period is 2023-07-04 00:00:00 to 2024-07-04 23:59:59 inclusive
+total amount of days:  {'B1': 367, 'E1': 367}
+Total for meter E1 tariff 1 15034.808 kWh -> $ 2133.44
+Total for meter E1 tariff 2 5060.587 kWh -> $ 1441.76
+E1 total E1 is 20095.4 kWh $ 3575.2
+E1 average usage per day 54.756
+E1 average cost per day $ 9.74
 
-Total for meter E1 tariff 1 9044.664 kWh -> $ 1930.49
-Total for meter E1 tariff 2 4518.329 kWh -> $ 1679.51
-Total for meter E1 tariff 4 5883.722 kWh -> $ 470.7
-E1 total E1 is 19446.72 kWh $ 4080.7
-E1 average usage per day 53.279
-E1 average cost per day 11.18
-
-number of days in period 365
-daily charge 397.485
+number of days in period 367
+daily charge $ 528.847
+Total export solar $ 1775.45
+Total cost $ 2328.6
 ```
 
-B1 for me is the solar export meter, the tariff will be all wrong, but the kWh will be correct, so I've exported 2787kWh of energy
+B1 for me is the solar export meter, modify config file accordingly.
 E1 is the usage meter.
 tariff 1 is off-peak
 2: peak

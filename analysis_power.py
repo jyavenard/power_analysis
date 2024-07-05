@@ -166,6 +166,7 @@ print("period is", startdate, "to", enddate, "inclusive")
 print("total amount of days: ", days)
 
 numberOfDays = (enddate-startdate).days + 1
+totalSolar = 0
 for i in totals:
   totalEnergyPeriod = 0
   totalPricePeriod = 0
@@ -173,12 +174,20 @@ for i in totals:
     energy = totals[i][j]
     if energy > 0:
       price = energy * config['pricing'][j] / 100
-      print("Total for meter", i, "tariff", j+1, round(energy, 3), "kWh -> $", round(price, 2))
-      totalEnergyPeriod += energy
-      totalPricePeriod += price
-  print(i, "total", i, "is", round(totalEnergyPeriod, 2),"kWh $", round(totalPricePeriod, 2))
-  print(i, 'average usage per day', round(totalEnergyPeriod / numberOfDays,3))
-  print(i, 'average cost per day $', round(totalPricePeriod / numberOfDays,2))
-  print()
+      if i != config['solarmeter']:
+        print("Total for meter", i, "tariff", j+1, round(energy, 3), "kWh -> $", round(price, 2))
+        totalEnergyPeriod += energy
+        totalPricePeriod += price
+      else:
+        totalSolar += energy
+
+  if i != config['solarmeter']:
+    print(i, "total", i, "is", round(totalEnergyPeriod, 2),"kWh $", round(totalPricePeriod, 2))
+    print(i, 'average usage per day', round(totalEnergyPeriod / numberOfDays,3))
+    print(i, 'average cost per day $', round(totalPricePeriod / numberOfDays,2))
+    print()
 print('number of days in period', numberOfDays)
 print('daily charge $', config['daily'] * numberOfDays / 100)
+
+print('Total export solar $', round((totalSolar * config['feedin'] / 100), 2))
+print('Total cost $', round((config['daily'] * numberOfDays / 100) + totalPricePeriod - (totalSolar * config['feedin'] / 100), 2))
