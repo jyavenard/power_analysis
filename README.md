@@ -34,7 +34,7 @@ tariff 1 is off-peak
 4: super off-peak
 5: free period if any
 
-The important bit is creating a config file, there's two tables: weekday and off-peak (I first wrote this tool in 2010 when the charges was weekday vs weekend)
+The important bit is creating a config file, there's two tables: workday and weekend (I first wrote this tool in 2010 when the charges was weekday vs weekend)
 
 electricity is charged per 30 minutes window, set the tariff type for each window.
 
